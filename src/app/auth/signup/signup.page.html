@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title >
+      <ion-icon name="person-add"></ion-icon>
+      Signup 
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/', 'auth', 'login']">
+        <ion-icon slot="end" name="log-in"></ion-icon>
+        login
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="submitForm(f)">
+    <ion-grid fixed>
+      <div >
+          <ion-row >
+              <ion-col size-sm="6" offset-sm="3" size="12">
+                <ion-item>
+                  <ion-label position="floating">Name</ion-label>
+                  <ion-input 
+                    type="text" 
+                    [(ngModel)]="name" 
+                    name="name" 
+                    #nameCtrl="ngModel"
+                    required 
+                  ></ion-input>
+                </ion-item>
+                <ion-item *ngIf="nameCtrl.invalid && nameCtrl.touched">
+                  <ion-label color="danger">Please insert your Name</ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+      </div>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input 
+              type="email" 
+              [(ngModel)]="email" 
+              name="email" 
+              #emailCtrl="ngModel"
+              required 
+            ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="emailCtrl.invalid && emailCtrl.touched">
+            <ion-label color="danger">Please insert valid EMAIL</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input 
+              type="password" 
+              [(ngModel)]="password" 
+              name="password" 
+              #passCtrl="ngModel"
+              required  
+              minlength="6"
+            ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="passCtrl.invalid && passCtrl.touched">
+            <ion-label color="danger">Please insert valid Password</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-button type="submit" expand="block" [disabled]="f.invalid">
+              <ion-label>Signup</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+
+
+<!--
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title *ngIf="signUpMode">
+        <ion-icon name="person-add"></ion-icon>
+        Signup New Customer
+      </ion-title>
+      <ion-title *ngIf="!signUpMode">
+        Login
+        <ion-icon name="log-in"></ion-icon>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+   <ion-content>
+    <form #f="ngForm" (ngSubmit)="submitForm(f)">
+      <ion-grid fixed>
+        <div *ngIf="signUpMode">
+            <ion-row >
+                <ion-col size-sm="6" offset-sm="3" size="12">
+                  <ion-item>
+                    <ion-label position="floating">Name</ion-label>
+                    <ion-input 
+                      type="text" 
+                      [(ngModel)]="name" 
+                      name="name" 
+                      #nameCtrl="ngModel"
+                      required 
+                    ></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="nameCtrl.invalid && nameCtrl.touched">
+                    <ion-label color="danger">Please insert your Name</ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+        </div>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3" size="12">
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input 
+                type="email" 
+                [(ngModel)]="email" 
+                name="email" 
+                #emailCtrl="ngModel"
+                required 
+              ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="emailCtrl.invalid && emailCtrl.touched">
+              <ion-label color="danger">Please insert valid EMAIL</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3" size="12">
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input 
+                type="password" 
+                [(ngModel)]="password" 
+                name="password" 
+                #passCtrl="ngModel"
+                required  
+                minlength="6"
+              ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="passCtrl.invalid && passCtrl.touched">
+              <ion-label color="danger">Please insert valid Password</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3" size="12">
+            <ion-button type="submit" expand="block" [disabled]="f.invalid">
+                <ion-label *ngIf="signUpMode">Signup</ion-label>
+                <ion-label *ngIf="!signUpMode">Login</ion-label>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3" size="12" class="ion-text-right">
+            <ion-button type="button"  color="medium" (click)="onSwitch()" >
+              <ion-label *ngIf="signUpMode" >Allready you have registered?</ion-label>
+              <ion-label *ngIf="!signUpMode" >New User?</ion-label>
+              <ion-icon slot="end" name="arrow-round-forward"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
+   -->
+  

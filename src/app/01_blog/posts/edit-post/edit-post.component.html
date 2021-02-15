@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onCancelEdit()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form #f="ngForm" (ngSubmit)="onConfirmEdit(f)">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3" size="12">
+              <ion-item>
+                <ion-label position="floating">Title</ion-label>
+                <ion-input 
+                  required 
+                  name="title"
+                  [(ngModel)]="post.title"
+                  #titleCtrl="ngModel" 
+                  type="text"
+                ></ion-input>
+              </ion-item>
+              <ion-item *ngIf="titleCtrl.invalid && contentCtrl.touched">
+                <ion-label>Please add a title</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3" size="12">
+              <ion-item>
+                <ion-label position="floating">Content</ion-label>
+                <ion-input 
+                  required 
+                  name="content"
+                  [(ngModel)]="post.content"
+                  #contentCtrl="ngModel" 
+                  type="text"
+                ></ion-input>
+              </ion-item>
+              <ion-item *ngIf="contentCtrl.invalid && contentCtrl.touched">
+                <ion-label>Please add Content</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3" size="12">
+              <ion-button expand="block" color="primary" type="submit" [disabled]="f.invalid">
+                Update Post
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+</ion-content>

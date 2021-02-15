@@ -1,0 +1,13 @@
+//Product data
+req.user.createProduct({
+        title: 'Three Fighter',
+        price: 39,
+        imageUrl: 'https://images.penguinrandomhouse.com/cover/9781101003831',
+        description: 'A classic novel'
+    })
+req.user.createProduct({
+        title: 'The Peace and Wars',
+        price: 23,
+        imageUrl: 'https://images.penguinrandomhouse.com/cover/9781101003831',
+        description: 'The most apreciate book in world'
+    })

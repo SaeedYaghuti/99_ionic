@@ -1,0 +1,31 @@
+<ion-content>
+    <ion-grid fixed>
+        <ion-row *ngFor="let post of posts">
+          <ion-col size-sm="6" offset-sm="3" size="12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>{{post.title}}</ion-card-title>
+              </ion-card-header>
+              <ion-img expand="block" [alt]="post.title" [src]="post.imagePath"></ion-img>
+              <ion-label>image Path: {{post.imagePath}}</ion-label>
+              <ion-card-content>
+                {{post.content}}
+              </ion-card-content>
+              <ion-label>userId: {{userId}}</ion-label>
+              <ion-label>post.author: {{post.author._id}}</ion-label>
+
+              <!-- Edit Buttons Group    -->
+              <ion-buttons *ngIf="isAuthenticated && userId == post.author._id" >
+                <ion-label>{{post._id}}</ion-label>
+                <ion-button [routerLink]="['/', 'posts', 'edit', post._id]" >
+                  <ion-icon color="primary" slot="icon-only" name="create"></ion-icon>
+                </ion-button>
+                <ion-button (click)="onDelete(post._id)">
+                  <ion-icon color="danger" slot="icon-only" name="trash"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-content>

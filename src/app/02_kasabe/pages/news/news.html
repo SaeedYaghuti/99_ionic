@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'News'|translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="newsDetail(news._id)" *ngFor="let news of newsList">
+      <ion-thumbnail item-left>
+        <img src="{{news.thumb}}">
+      </ion-thumbnail>
+      <h2>{{news.title}} </h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

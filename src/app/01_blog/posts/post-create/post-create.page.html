@@ -1,0 +1,60 @@
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input 
+              required 
+              formControlName="title" 
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="form.get('title').invalid && form.get('title').touched">
+            <ion-label>Please add a title</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-button expand="block" fill="outline" (click)="filePicker.click()">
+            <ion-icon slot="start" name="camera"></ion-icon>
+            Pick Picture
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <div class="ion-hide">
+        <input type="file" #filePicker (change)="onPickedPicture($event)">
+      </div>
+      <ion-row *ngIf="imagePreview && imagePreview != '' && form.get('image').valid">
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-img expand="block" [alt]="form.get('title')" [src]="imagePreview"></ion-img>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-item>
+            <ion-label position="floating">Content</ion-label>
+            <ion-input 
+              required 
+              formControlName="content"
+            ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="form.get('content').invalid && form.get('content').touched">
+            <ion-label>Please add Content</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size="12">
+          <ion-button expand="block" color="primary" type="submit" [disabled]="form.invalid">
+            Submit Post
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
